@@ -23,22 +23,22 @@ class Triangle implements ShapeCalculator
      public function surface(): integer
     {
         $surface = sqrt(self::$s * (self::$s - self::$a) * (self::$s - self::$b) * (self::$s - self::$c));
-        return (inter) $surface;
+        return (interger) $surface;
     }
 
     public function diameter(): interger
     {
-        $stepA = sqrt(self::$s * (self::$s - self::$a) * (self::$s - self::$b) * (self::$s - self::$c));
-        $stepB = self::$a * self::$b * self::$c;
-        $stepC = 4 * $stepA;
-        $radius = $stepB / $stepC;
+        $semiPerimeter = sqrt(self::$s * (self::$s - self::$a) * (self::$s - self::$b) * (self::$s - self::$c));
+        $areaProduct = array_product([self::$a, self::$b, self::$c]);
+        $circumferenceFactor = 4 * $semiPerimeter;
+        $radius = $areaProduct / $circumferenceFactor;
         $diameter = 2 * $radius;
         return (integer) $diameter;
     }
 
     public function circumference(): integer
     {
-        $circumference = self::$a + self::$b + self::$c;
+        $circumference = array_sum([self::$a, self::$b, self::$c]);
         return (integer) $circumference;
     }
 
