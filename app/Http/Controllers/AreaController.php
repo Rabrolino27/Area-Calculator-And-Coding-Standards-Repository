@@ -14,7 +14,7 @@ class AreaController extends Controller
 
         $check = (new ValueChecker())->check([$a, $b, $c, $radius]));
         
-        if($check == true)
+        if($check == false)
             return response()->json(['status' => 400, 'message' => 'Sides cannot be Negative']);
         
         $s = array_sum([$a, $b, $c]) / 2;
