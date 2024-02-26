@@ -20,13 +20,13 @@ class Triangle implements ShapeCalculator
         $this->s = $s;
     }
     
-     public function surface(): string
+     public function surface(): integer
     {
         $surface = sqrt(self::$s * (self::$s - self::$a) * (self::$s - self::$b) * (self::$s - self::$c));
-        return (string) $surface;
+        return (inter) $surface;
     }
 
-    public function diameter(): string
+    public function diameter(): interger
     {
         $stepA = sqrt(self::$s * (self::$s - self::$a) * (self::$s - self::$b) * (self::$s - self::$c));
         $stepB = self::$a * self::$b * self::$c;
@@ -36,10 +36,10 @@ class Triangle implements ShapeCalculator
         return (integer) $diameter;
     }
 
-    public function circumference(): string
+    public function circumference(): integer
     {
         $circumference = self::$a + self::$b + self::$c;
-        return (string) $circumference;
+        return (integer) $circumference;
     }
 
     
