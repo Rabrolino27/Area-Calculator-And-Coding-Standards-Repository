@@ -5,13 +5,16 @@ namespace App\Http\Controllers;
 use App\Services\Sum;
 use App\Services\Circle;
 use App\Services\Triangle;
+use App\Services\ValueChecker;
 use Illuminate\Http\Request;
 
 class DiameterController extends Controller
 {
     public function index($a,$b,$c,$radius, Sum $sum){
-        if($a < 0 || $b < 0 || $c < 0 || $radius < 0 )
-        return response()->json(['status' => 400, 'message' => 'Sides cannot be Negative']);
+        $check = (new ValueChecker())->check([$a, $b, $c, $radius]));
+        
+        if($check == true)
+            return response()->json(['status' => 400, 'message' => 'Sides cannot be Negative']);
         
         $s = array_sum([$a, $b, $c]) / 2;
         
