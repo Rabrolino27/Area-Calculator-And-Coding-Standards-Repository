@@ -15,7 +15,8 @@ class TriangleController extends Controller
         if($a < 0 || $b < 0 || $c < 0 )
         return response()->json(['status' => 400, 'message' => 'Sides cannot be Negative']);
         
-        $s = ($a+$b+$c)/2;
+        $s = array_sum([$a, $b, $c]) / 2;
+
         $triangle = new Triangle($a, $b, $c, $s);
         $surface = $triangle->surface();
         $diameter = $triangle->diameter();
