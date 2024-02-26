@@ -8,6 +8,11 @@ use App\Contracts\ShapeCalculator;
 
 class Triangle implements ShapeCalculator
 {
+    protected $a;
+    protected $b;
+    protected $c;
+    protected $s;
+    
     public function __construct($a, $b, $c, $s){
         $this->a = $a;
         $this->b = $b;
@@ -15,26 +20,26 @@ class Triangle implements ShapeCalculator
         $this->s = $s;
     }
     
-    public function surface():string{
-       $surface = sqrt($this->s*($this->s-$this->a)*($this->s-$this->b)*($this->s-$this->c));
-       return $surface;
-    
+     public function surface(): string
+    {
+        $surface = sqrt(self::$s * (self::$s - self::$a) * (self::$s - self::$b) * (self::$s - self::$c));
+        return (string) $surface;
     }
 
-    public function diameter():string{
-
-        $stepA = sqrt($this->s*($this->s-$this->a)*($this->s-$this->b)*($this->s-$this->c));
-        $stepB = $this->a*$this->b*$this->c;
+    public function diameter(): string
+    {
+        $stepA = sqrt(self::$s * (self::$s - self::$a) * (self::$s - self::$b) * (self::$s - self::$c));
+        $stepB = self::$a * self::$b * self::$c;
         $stepC = 4 * $stepA;
-        $radius = $stepB/$stepC;
-        $diamater = 2 * $radius;
-        return $diamater;
+        $radius = $stepB / $stepC;
+        $diameter = 2 * $radius;
+        return (integer) $diameter;
     }
 
-    public function circumference():string{
-
-        $circumference = $this->a+$this->b+$this->c;
-        return $circumference;
+    public function circumference(): string
+    {
+        $circumference = self::$a + self::$b + self::$c;
+        return (string) $circumference;
     }
 
     
