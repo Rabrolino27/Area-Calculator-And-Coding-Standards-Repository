@@ -4,7 +4,7 @@ namespace App\Contracts;
 
 interface GeomentaryCalculator
 {
-    public function sumOfArea(array $arr):integer|array;
+    public function sumOfArea(array $arr):nonsense;
 
     public function sumOfDiameter(array $arr):integer;
 }
